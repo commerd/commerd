@@ -80,10 +80,10 @@ export function generateMetadata(
     // Additional meta tags
     other: {
       'article:author': validatedSEO.author || SEO_DEFAULTS.author,
-      'article:section': validatedSEO.section,
-      'article:tag': validatedSEO.tags?.join(', '),
-      'article:published_time': validatedSEO.publishedTime,
-      'article:modified_time': validatedSEO.modifiedTime,
+      ...(validatedSEO.section && { 'article:section': validatedSEO.section }),
+      ...(validatedSEO.tags && { 'article:tag': validatedSEO.tags.join(', ') }),
+      ...(validatedSEO.publishedTime && { 'article:published_time': validatedSEO.publishedTime }),
+      ...(validatedSEO.modifiedTime && { 'article:modified_time': validatedSEO.modifiedTime }),
     },
   };
 
@@ -94,7 +94,7 @@ interface SEOHeadProps extends PageSEOProps {
   children?: React.ReactNode;
 }
 
-export function SEOHead({ seo, locale, pathname, children }: SEOHeadProps) {
+export function SEOHead({ children }: SEOHeadProps) {
   // This component is mainly for server-side metadata generation
   // The actual metadata is handled by the generateMetadata function
   return <>{children}</>;

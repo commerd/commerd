@@ -1,23 +1,13 @@
 export const i18nConfig = {
   defaultLocale: 'en',
-  locales: ['en', 'da', 'sv', 'no', 'de', 'fr', 'es'],
+  locales: ['en', 'th'],
   localeNames: {
     en: 'English',
-    da: 'Dansk',
-    sv: 'Svenska',
-    no: 'Norsk',
-    de: 'Deutsch',
-    fr: 'Français',
-    es: 'Español',
+    th: 'ไทย',
   },
   localeFlags: {
     en: '🇺🇸',
-    da: '🇩🇰',
-    sv: '🇸🇪',
-    no: '🇳🇴',
-    de: '🇩🇪',
-    fr: '🇫🇷',
-    es: '🇪🇸',
+    th: '🇹🇭',
   },
 } as const;
 

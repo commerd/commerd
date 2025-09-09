@@ -1,6 +1,6 @@
 import { SEOConfig } from './types';
-import { DEFAULT_SEO_CONFIG } from './constants';
-import { i18nConfig, type Locale } from '../i18n/config';
+import { DEFAULT_SEO_CONFIG, SEO_DEFAULTS } from './constants';
+import { type Locale } from '../i18n/config';
 
 // SEO content for different pages and languages
 export const seoContent: Record<string, Record<Locale, SEOConfig>> = {
@@ -11,40 +11,10 @@ export const seoContent: Record<string, Record<Locale, SEOConfig>> = {
       keywords: ['business solutions', 'innovation', 'digital transformation', 'growth', 'technology'],
       ogType: 'website',
     },
-    da: {
-      title: 'Commerd - Innovative Forretningsløsninger',
-      description: 'Opdag banebrydende forretningsløsninger med Commerd. Vi leverer innovative værktøjer og tjenester til at hjælpe din virksomhed med at vokse og lykkes.',
-      keywords: ['forretningsløsninger', 'innovation', 'digital transformation', 'vækst', 'teknologi'],
-      ogType: 'website',
-    },
-    sv: {
-      title: 'Commerd - Innovativa Affärslösningar',
-      description: 'Upptäck banbrytande affärslösningar med Commerd. Vi leverer innovativa verktyg och tjänster för att hjälpa ditt företag att växa och lyckas.',
-      keywords: ['affärslösningar', 'innovation', 'digital transformation', 'tillväxt', 'teknologi'],
-      ogType: 'website',
-    },
-    no: {
-      title: 'Commerd - Innovative Forretningsløsninger',
-      description: 'Oppdag banebrytende forretningsløsninger med Commerd. Vi leverer innovative verktøy og tjenester for å hjelpe bedriften din med å vokse og lykkes.',
-      keywords: ['forretningsløsninger', 'innovation', 'digital transformasjon', 'vekst', 'teknologi'],
-      ogType: 'website',
-    },
-    de: {
-      title: 'Commerd - Innovative Geschäftslösungen',
-      description: 'Entdecken Sie bahnbrechende Geschäftslösungen mit Commerd. Wir bieten innovative Tools und Dienstleistungen, um Ihrem Unternehmen beim Wachstum und Erfolg zu helfen.',
-      keywords: ['Geschäftslösungen', 'Innovation', 'digitale Transformation', 'Wachstum', 'Technologie'],
-      ogType: 'website',
-    },
-    fr: {
-      title: 'Commerd - Solutions Commerciales Innovantes',
-      description: 'Découvrez des solutions commerciales révolutionnaires avec Commerd. Nous fournissons des outils et services innovants pour aider votre entreprise à croître et réussir.',
-      keywords: ['solutions commerciales', 'innovation', 'transformation numérique', 'croissance', 'technologie'],
-      ogType: 'website',
-    },
-    es: {
-      title: 'Commerd - Soluciones Empresariales Innovadoras',
-      description: 'Descubre soluciones empresariales revolucionarias con Commerd. Proporcionamos herramientas y servicios innovadores para ayudar a tu empresa a crecer y tener éxito.',
-      keywords: ['soluciones empresariales', 'innovación', 'transformación digital', 'crecimiento', 'tecnología'],
+    th: {
+      title: 'Commerd - โซลูชันธุรกิจที่ล้ำสมัย',
+      description: 'ค้นพบโซลูชันธุรกิจที่ล้ำสมัยกับ Commerd เราให้บริการเครื่องมือและบริการที่ทันสมัยเพื่อช่วยให้ธุรกิจของคุณเติบโตและประสบความสำเร็จในยุคดิจิทัล',
+      keywords: ['โซลูชันธุรกิจ', 'นวัตกรรม', 'การเปลี่ยนแปลงดิจิทัล', 'การเติบโต', 'เทคโนโลยี'],
       ogType: 'website',
     },
   },
@@ -55,41 +25,10 @@ export const seoContent: Record<string, Record<Locale, SEOConfig>> = {
       keywords: ['about us', 'company story', 'mission', 'team', 'values'],
       ogType: 'website',
     },
-    da: {
-      title: 'Om Commerd - Vores Historie og Mission',
-      description: 'Lær om Commerds rejse, mission og det passionerede team bag vores innovative forretningsløsninger. Opdag hvordan vi transformerer industrier.',
-      keywords: ['om os', 'virksomhedshistorie', 'mission', 'team', 'værdier'],
-      ogType: 'website',
-    },
-    // Add other languages as needed...
-    sv: {
-      title: 'Om Commerd - Vår Historia och Mission',
-      description: 'Lär dig om Commerds resa, mission och det passionerade teamet bakom våra innovativa affärslösningar. Upptäck hur vi transformerar industrier.',
-      keywords: ['om oss', 'företagshistoria', 'mission', 'team', 'värderingar'],
-      ogType: 'website',
-    },
-    no: {
-      title: 'Om Commerd - Vår Historie og Misjon',
-      description: 'Lær om Commerds reise, misjon og det lidenskapelige teamet bak våre innovative forretningsløsninger. Oppdag hvordan vi transformerer industrier.',
-      keywords: ['om oss', 'bedriftshistorie', 'misjon', 'team', 'verdier'],
-      ogType: 'website',
-    },
-    de: {
-      title: 'Über Commerd - Unsere Geschichte und Mission',
-      description: 'Erfahren Sie mehr über Commerds Reise, Mission und das leidenschaftliche Team hinter unseren innovativen Geschäftslösungen. Entdecken Sie, wie wir Branchen transformieren.',
-      keywords: ['über uns', 'Firmengeschichte', 'Mission', 'Team', 'Werte'],
-      ogType: 'website',
-    },
-    fr: {
-      title: 'À Propos de Commerd - Notre Histoire et Mission',
-      description: 'Découvrez le parcours de Commerd, notre mission et l\'équipe passionnée derrière nos solutions commerciales innovantes. Voyez comment nous transformons les industries.',
-      keywords: ['à propos', 'histoire de l\'entreprise', 'mission', 'équipe', 'valeurs'],
-      ogType: 'website',
-    },
-    es: {
-      title: 'Acerca de Commerd - Nuestra Historia y Misión',
-      description: 'Conoce el viaje de Commerd, nuestra misión y el equipo apasionado detrás de nuestras soluciones empresariales innovadoras. Descubre cómo transformamos industrias.',
-      keywords: ['acerca de nosotros', 'historia de la empresa', 'misión', 'equipo', 'valores'],
+    th: {
+      title: 'เกี่ยวกับ Commerd - เรื่องราวและพันธกิจของเรา',
+      description: 'เรียนรู้เกี่ยวกับการเดินทาง พันธกิจ และทีมงานที่มีความหลงใหลของ Commerd ที่อยู่เบื้องหลังโซลูชันธุรกิจที่ล้ำสมัยของเรา ค้นพบว่าเรากำลังเปลี่ยนแปลงอุตสาหกรรมอย่างไร',
+      keywords: ['เกี่ยวกับเรา', 'เรื่องราวบริษัท', 'พันธกิจ', 'ทีมงาน', 'ค่านิยม'],
       ogType: 'website',
     },
   },

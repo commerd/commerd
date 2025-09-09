@@ -4,12 +4,12 @@ export interface SEOConfig {
   keywords?: string[];
   canonical?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article' | 'product' | 'profile';
+  ogType?: 'website' | 'article' | 'profile';
   twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player';
   noindex?: boolean;
   nofollow?: boolean;
   alternateLanguages?: AlternateLanguage[];
-  structuredData?: Record<string, any>;
+  structuredData?: Record<string, unknown>;
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
@@ -29,6 +29,6 @@ export interface PageSEOProps {
 }
 
 export interface StructuredDataProps {
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   type: 'Organization' | 'WebSite' | 'WebPage' | 'Article' | 'Product' | 'BreadcrumbList';
 }
