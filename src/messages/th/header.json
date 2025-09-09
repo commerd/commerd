@@ -1,0 +1,29 @@
+{
+  "logo": "Commerd",
+  "tagline": "โซลูชันธุรกิจที่ล้ำสมัย",
+  "navigation": {
+    "home": "หน้าแรก",
+    "about": "เกี่ยวกับเรา",
+    "services": "บริการ",
+    "solutions": "โซลูชัน",
+    "contact": "ติดต่อ",
+    "blog": "บล็อก",
+    "pricing": "ราคา",
+    "support": "การสนับสนุน"
+  },
+  "actions": {
+    "getStarted": "เริ่มต้น",
+    "signIn": "เข้าสู่ระบบ",
+    "demo": "ดูการสาธิต",
+    "contact": "ติดต่อเรา"
+  },
+  "search": {
+    "placeholder": "ค้นหา...",
+    "button": "ค้นหา"
+  },
+  "language": {
+    "label": "ภาษา",
+    "current": "ไทย",
+    "switch": "เปลี่ยนภาษา"
+  }
+}

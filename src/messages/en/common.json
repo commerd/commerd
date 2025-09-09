@@ -1,0 +1,21 @@
+{
+  "loading": "Loading...",
+  "error": "Something went wrong",
+  "retry": "Try Again",
+  "success": "Success!",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "save": "Save",
+  "edit": "Edit",
+  "delete": "Delete",
+  "search": "Search",
+  "filter": "Filter",
+  "sort": "Sort",
+  "next": "Next",
+  "previous": "Previous",
+  "back": "Back",
+  "continue": "Continue",
+  "finish": "Finish",
+  "submit": "Submit",
+  "reset": "Reset"
+}

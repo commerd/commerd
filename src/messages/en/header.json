@@ -1,0 +1,29 @@
+{
+  "logo": "Commerd",
+  "tagline": "Innovative Business Solutions",
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "solutions": "Solutions",
+    "contact": "Contact",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "support": "Support"
+  },
+  "actions": {
+    "getStarted": "Get Started",
+    "signIn": "Sign In",
+    "demo": "Watch Demo",
+    "contact": "Contact Us"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "button": "Search"
+  },
+  "language": {
+    "label": "Language",
+    "current": "English",
+    "switch": "Switch Language"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "company": {
+    "title": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "press": "Press",
+    "partners": "Partners",
+    "contact": "Contact"
+  },
+  "product": {
+    "title": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "integrations": "Integrations",
+    "api": "API",
+    "updates": "Updates"
+  },
+  "support": {
+    "title": "Support",
+    "help": "Help Center",
+    "documentation": "Documentation",
+    "community": "Community",
+    "status": "Status",
+    "contact": "Contact Support"
+  },
+  "legal": {
+    "title": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "security": "Security",
+    "compliance": "Compliance"
+  },
+  "social": {
+    "title": "Follow Us",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "youtube": "YouTube",
+    "github": "GitHub"
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Get the latest news and updates delivered to your inbox.",
+    "placeholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing!"
+  },
+  "bottom": {
+    "copyright": "© 2024 Commerd. All rights reserved.",
+    "madeWith": "Made with ❤️ for businesses worldwide",
+    "version": "Version 1.0.0"
+  }
+}

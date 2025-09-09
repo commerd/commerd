@@ -1,0 +1,34 @@
+{
+  "title": "Welcome to Commerd",
+  "subtitle": "Innovative business solutions for the digital age",
+  "description": "Discover cutting-edge tools and services designed to help your business grow and succeed.",
+  "getStarted": "Get Started",
+  "learnMore": "Learn More",
+  "watchDemo": "Watch Demo",
+  "features": {
+    "title": "Why Choose Commerd?",
+    "subtitle": "Powerful features that drive business success",
+    "items": [
+      {
+        "title": "Innovation",
+        "description": "Cutting-edge technology and innovative solutions",
+        "icon": "🚀"
+      },
+      {
+        "title": "Reliability",
+        "description": "Trusted by thousands of businesses worldwide",
+        "icon": "🛡️"
+      },
+      {
+        "title": "Scalability",
+        "description": "Grows with your business needs",
+        "icon": "📈"
+      },
+      {
+        "title": "Support",
+        "description": "24/7 expert support when you need it",
+        "icon": "🎧"
+      }
+    ]
+  }
+}
