@@ -23,8 +23,6 @@ export default async function LocalizedHome({ params }: PageProps) {
   
   // Load messages using the new system
   const messages = await createServerMessageProvider(locale, [
-    'header',
-    'footer', 
     'home'
   ]);
   
@@ -34,26 +32,26 @@ export default async function LocalizedHome({ params }: PageProps) {
     <PageSEO seo={seoContent} locale={locale} pathname={`/${locale}`}>
       <div>
           {/* Hero Section */}
-          <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+          <section className="bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 {t.title}
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              <p className="text-xl md:text-2xl mb-8 text-green-100">
                 {t.subtitle}
               </p>
-              <p className="text-lg mb-12 max-w-3xl mx-auto text-blue-50">
+              <p className="text-lg mb-12 max-w-3xl mx-auto text-green-50">
                 {t.description}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                   {t.getStarted}
                 </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
                   {t.learnMore}
                 </button>
-                <button className="border-2 border-blue-300 text-blue-100 px-8 py-3 rounded-lg font-semibold hover:bg-blue-500 hover:text-white transition-colors">
+                <button className="border-2 border-green-300 text-green-100 px-8 py-3 rounded-lg font-semibold hover:bg-green-500 hover:text-white transition-colors">
                   {t.watchDemo}
                 </button>
               </div>
@@ -78,7 +76,9 @@ export default async function LocalizedHome({ params }: PageProps) {
                     key={index}
                     className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                   >
-                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl font-bold mb-4">
+                      {feature.icon}
+                    </div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {feature.title}
                     </h3>
@@ -96,17 +96,17 @@ export default async function LocalizedHome({ params }: PageProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                  Ready to Get Started?
+                  Ready to Transform Your Ecommerce Business?
                 </h2>
                 <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                  Join thousands of businesses that trust Commerd for their digital transformation needs.
+                  Join Thai businesses that trust Commerd for world-class SEO, CRO, design, and growth strategies.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                    Start Free Trial
+                  <button className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">
+                    Start Your Project
                   </button>
                   <button className="px-8 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                    Schedule Demo
+                    Book Free Consultation
                   </button>
                 </div>
               </div>

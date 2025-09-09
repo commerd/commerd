@@ -7,21 +7,21 @@
     "partners": "พาร์ทเนอร์",
     "contact": "ติดต่อ"
   },
-  "product": {
-    "title": "ผลิตภัณฑ์",
-    "features": "ฟีเจอร์",
-    "pricing": "ราคา",
-    "integrations": "การเชื่อมต่อ",
-    "api": "API",
-    "updates": "อัปเดต"
+  "services": {
+    "title": "บริการ",
+    "seo": "SEO และการเติบโต",
+    "cro": "การเพิ่มอัตราการแปลง",
+    "design": "การออกแบบ UI/UX",
+    "analytics": "การวิเคราะห์ธุรกิจ",
+    "consulting": "ที่ปรึกษาอีคอมเมิร์ซ"
   },
-  "support": {
-    "title": "การสนับสนุน",
-    "help": "ศูนย์ช่วยเหลือ",
-    "documentation": "เอกสาร",
-    "community": "ชุมชน",
-    "status": "สถานะ",
-    "contact": "ติดต่อฝ่ายสนับสนุน"
+  "resources": {
+    "title": "ทรัพยากร",
+    "caseStudies": "กรณีศึกษา",
+    "blog": "ข้อมูลเชิงลึกอีคอมเมิร์ซ",
+    "guides": "คู่มือการเติบโต",
+    "tools": "เครื่องมือฟรี",
+    "webinars": "เว็บินาร์"
   },
   "legal": {
     "title": "กฎหมาย",

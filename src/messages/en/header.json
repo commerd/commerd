@@ -1,6 +1,6 @@
 {
   "logo": "Commerd",
-  "tagline": "Innovative Business Solutions",
+  "tagline": "Ecommerce Agency for Thai Businesses",
   "navigation": {
     "home": "Home",
     "about": "About",
@@ -12,9 +12,9 @@
     "support": "Support"
   },
   "actions": {
-    "getStarted": "Get Started",
-    "signIn": "Sign In",
-    "demo": "Watch Demo",
+    "getStarted": "Start Project",
+    "signIn": "Client Portal",
+    "demo": "Book Consultation",
     "contact": "Contact Us"
   },
   "search": {

@@ -7,21 +7,21 @@
     "partners": "Partners",
     "contact": "Contact"
   },
-  "product": {
-    "title": "Product",
-    "features": "Features",
-    "pricing": "Pricing",
-    "integrations": "Integrations",
-    "api": "API",
-    "updates": "Updates"
+  "services": {
+    "title": "Services",
+    "seo": "SEO & Growth",
+    "cro": "Conversion Optimization",
+    "design": "UI/UX Design",
+    "analytics": "Business Intelligence",
+    "consulting": "Ecommerce Consulting"
   },
-  "support": {
-    "title": "Support",
-    "help": "Help Center",
-    "documentation": "Documentation",
-    "community": "Community",
-    "status": "Status",
-    "contact": "Contact Support"
+  "resources": {
+    "title": "Resources",
+    "caseStudies": "Case Studies",
+    "blog": "Ecommerce Insights",
+    "guides": "Growth Guides",
+    "tools": "Free Tools",
+    "webinars": "Webinars"
   },
   "legal": {
     "title": "Legal",

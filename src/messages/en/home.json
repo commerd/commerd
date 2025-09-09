@@ -1,33 +1,33 @@
 {
-  "title": "Welcome to Commerd",
-  "subtitle": "Innovative business solutions for the digital age",
-  "description": "Discover cutting-edge tools and services designed to help your business grow and succeed.",
-  "getStarted": "Get Started",
-  "learnMore": "Learn More",
-  "watchDemo": "Watch Demo",
+  "title": "Premium Ecommerce Solutions for Thai Businesses",
+  "subtitle": "Scandinavian design meets Thai market expertise",
+  "description": "We help Thai ecommerce businesses achieve world-class results through proven SEO, CRO, design, and business intelligence strategies.",
+  "getStarted": "Start Your Project",
+  "learnMore": "View Our Work",
+  "watchDemo": "Book Consultation",
   "features": {
-    "title": "Why Choose Commerd?",
-    "subtitle": "Powerful features that drive business success",
+    "title": "Why Thai Businesses Choose Commerd",
+    "subtitle": "Proven expertise across diverse industries",
     "items": [
       {
-        "title": "Innovation",
-        "description": "Cutting-edge technology and innovative solutions",
-        "icon": "🚀"
+        "title": "Scandinavian Design",
+        "description": "Clean, functional design principles that convert visitors into customers",
+        "icon": "D"
       },
       {
-        "title": "Reliability",
-        "description": "Trusted by thousands of businesses worldwide",
-        "icon": "🛡️"
+        "title": "Thai Market Expertise",
+        "description": "Deep understanding of Thai consumer behavior and local business practices",
+        "icon": "T"
       },
       {
-        "title": "Scalability",
-        "description": "Grows with your business needs",
-        "icon": "📈"
+        "title": "Industry Experience",
+        "description": "Proven results in jewelry, pharmaceuticals, banking, and more",
+        "icon": "I"
       },
       {
-        "title": "Support",
-        "description": "24/7 expert support when you need it",
-        "icon": "🎧"
+        "title": "Data-Driven Growth",
+        "description": "Advanced SEO, CRO, and business intelligence for measurable results",
+        "icon": "A"
       }
     ]
   }

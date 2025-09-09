@@ -13,15 +13,15 @@ export function Footer({ locale, messages }: FooterProps) {
 
 
   const socialLinks = [
-    { name: 'Twitter', href: 'https://twitter.com/commerd', icon: '🐦' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/commerd', icon: '💼' },
-    { name: 'Facebook', href: 'https://facebook.com/commerd', icon: '📘' },
-    { name: 'YouTube', href: 'https://youtube.com/commerd', icon: '📺' },
-    { name: 'GitHub', href: 'https://github.com/commerd', icon: '🐙' },
+    { name: 'Twitter', href: 'https://twitter.com/commerd', icon: 'T' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/commerd', icon: 'L' },
+    { name: 'Facebook', href: 'https://facebook.com/commerd', icon: 'F' },
+    { name: 'YouTube', href: 'https://youtube.com/commerd', icon: 'Y' },
+    { name: 'GitHub', href: 'https://github.com/commerd', icon: 'G' },
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white border-t border-green-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Section */}
@@ -71,95 +71,95 @@ export function Footer({ locale, messages }: FooterProps) {
             </ul>
           </div>
 
-          {/* Product Section */}
+          {/* Services Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.product.title}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t.services.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/features', locale)} 
+                  href={getLocalizedUrl('/seo', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.product.features}
+                  {t.services.seo}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/pricing', locale)} 
+                  href={getLocalizedUrl('/cro', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.product.pricing}
+                  {t.services.cro}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/integrations', locale)} 
+                  href={getLocalizedUrl('/design', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.product.integrations}
+                  {t.services.design}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/api', locale)} 
+                  href={getLocalizedUrl('/analytics', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.product.api}
+                  {t.services.analytics}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/updates', locale)} 
+                  href={getLocalizedUrl('/consulting', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.product.updates}
+                  {t.services.consulting}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Support Section */}
+          {/* Resources Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.support.title}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t.resources.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/help', locale)} 
+                  href={getLocalizedUrl('/case-studies', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.support.help}
+                  {t.resources.caseStudies}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/docs', locale)} 
+                  href={getLocalizedUrl('/blog', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.support.documentation}
+                  {t.resources.blog}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/community', locale)} 
+                  href={getLocalizedUrl('/guides', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.support.community}
+                  {t.resources.guides}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/status', locale)} 
+                  href={getLocalizedUrl('/tools', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.support.status}
+                  {t.resources.tools}
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/support', locale)} 
+                  href={getLocalizedUrl('/webinars', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.support.contact}
+                  {t.resources.webinars}
                 </Link>
               </li>
             </ul>
@@ -195,62 +195,33 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/security', locale)} 
+                  href={getLocalizedUrl('/disclaimer', locale)} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  {t.legal.security}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href={getLocalizedUrl('/compliance', locale)} 
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  {t.legal.compliance}
+                  {t.legal.disclaimer}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Newsletter Section */}
+          {/* Social Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.newsletter.title}</h3>
-            <p className="text-gray-300 mb-4 text-sm">
-              {t.newsletter.description}
-            </p>
-            
-            <form className="space-y-2">
-              <input
-                type="email"
-                placeholder={t.newsletter.placeholder}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
-              >
-                {t.newsletter.subscribe}
-              </button>
-            </form>
-
-            {/* Social Links */}
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold mb-3">{t.social.title}</h4>
-              <div className="flex space-x-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors"
-                    aria-label={social.name}
-                  >
-                    <span className="text-lg">{social.icon}</span>
-                  </a>
-                ))}
-              </div>
+            <h3 className="text-lg font-semibold mb-4">{t.social.title}</h3>
+            <div className="flex space-x-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-green-400 transition-colors"
+                  aria-label={social.name}
+                >
+                  <span className="text-lg font-bold bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-green-500 transition-colors">
+                    {social.icon}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -259,12 +230,7 @@ export function Footer({ locale, messages }: FooterProps) {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-300 text-sm">
-              {t.bottom.copyright}
-            </div>
-            
-            <div className="flex items-center space-x-6">
-              <span className="text-gray-300 text-sm">{t.bottom.madeWith}</span>
-              <span className="text-gray-400 text-xs">{t.bottom.version}</span>
+              {t.copyright}
             </div>
           </div>
         </div>

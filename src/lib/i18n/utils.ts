@@ -32,3 +32,29 @@ export function getOtherLocaleUrl(currentLocale: Locale): string {
   const otherLocale = getOtherLocale(currentLocale);
   return otherLocale === 'en' ? '/' : '/th';
 }
+
+/**
+ * Get the equivalent URL in the other locale for the current path
+ * @param currentPath - The current path (e.g., '/about', '/contact', '/th/about')
+ * @param currentLocale - The current locale
+ * @returns The equivalent URL in the other locale
+ */
+export function getOtherLocaleUrlForPath(currentPath: string, currentLocale: Locale): string {
+  const otherLocale = getOtherLocale(currentLocale);
+  
+  // Handle the case where currentPath is just the locale prefix (e.g., '/th' or '/en')
+  if (currentPath === `/${currentLocale}`) {
+    return otherLocale === 'en' ? '/' : '/th';
+  }
+  
+  // Remove locale prefix if present
+  let cleanPath = currentPath;
+  if (currentLocale === 'th' && currentPath.startsWith('/th')) {
+    cleanPath = currentPath.replace('/th', '') || '/';
+  } else if (currentLocale === 'en' && currentPath.startsWith('/en')) {
+    cleanPath = currentPath.replace('/en', '') || '/';
+  }
+  // If no locale prefix, use the path as-is
+  
+  return getLocalizedUrl(cleanPath, otherLocale);
+}
