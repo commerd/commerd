@@ -3,6 +3,7 @@ import { getSEOContent } from "@/lib/seo/content";
 import { PageSEO } from "@/components/seo";
 import { createServerMessageProvider } from "@/lib/i18n/server";
 import { type Locale } from "@/lib/i18n/config";
+import { AppLayout } from "@/components/layout/AppLayout";
 
 // Generate metadata for the homepage
 export async function generateMetadata() {
@@ -24,8 +25,9 @@ export default async function HomePage() {
   const t = messages.getMessages('home');
   
   return (
-    <PageSEO seo={seoContent} locale={locale} pathname="/">
-      <div>
+    <AppLayout locale={locale}>
+      <PageSEO seo={seoContent} locale={locale} pathname="/">
+        <div>
           {/* Hero Section */}
           <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -105,7 +107,8 @@ export default async function HomePage() {
               </div>
             </div>
           </section>
-      </div>
-    </PageSEO>
+        </div>
+      </PageSEO>
+    </AppLayout>
   );
 }

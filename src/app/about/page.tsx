@@ -1,6 +1,7 @@
 import { generateMetadata as generateSEOMetadata } from "@/components/seo";
 import { getSEOContent } from "@/lib/seo/content";
 import { PageSEO } from "@/components/seo";
+import { AppLayout } from "@/components/layout/AppLayout";
 
 // Generate metadata for this page
 export async function generateMetadata() {
@@ -17,13 +18,14 @@ export default function About() {
   ];
   
   return (
-    <PageSEO 
-      seo={seoContent} 
-      locale="en" 
-      pathname="/about"
-      breadcrumbs={breadcrumbs}
-    >
-      <div className="font-sans min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <AppLayout locale="en">
+      <PageSEO 
+        seo={seoContent} 
+        locale="en" 
+        pathname="/about"
+        breadcrumbs={breadcrumbs}
+      >
+        <div className="font-sans min-h-screen p-8 pb-20 gap-16 sm:p-20">
         <main className="max-w-4xl mx-auto">
           <div className="mb-8">
             <h1 className="text-4xl font-bold mb-4">
@@ -66,7 +68,8 @@ export default function About() {
             </section>
           </div>
         </main>
-      </div>
-    </PageSEO>
+        </div>
+      </PageSEO>
+    </AppLayout>
   );
 }
