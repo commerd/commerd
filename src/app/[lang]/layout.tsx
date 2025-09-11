@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return supportedLocales.map((lng: Locale) => ({ lang: lng }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params: _params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   return { title: "Commerd" };
 }
 
