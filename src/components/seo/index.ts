@@ -1,7 +1,6 @@
 // Core SEO components
 export { PageSEO } from './PageSEO';
 export { generateMetadata } from '@/lib/seo/utils';
-
 // Structured data components
 export {
   StructuredData,
@@ -12,7 +11,7 @@ export {
   BreadcrumbStructuredData,
 } from './StructuredData';
 
-// Types and utilities
+// Types and utilities new comment
 export type { SEOConfig, PageSEOProps, StructuredDataProps } from '@/lib/seo/types';
 export { DEFAULT_SEO_CONFIG, SEO_DEFAULTS } from '@/lib/seo/constants';
 export { getSEOContent } from '@/lib/seo/content';
