@@ -1,26 +1,11 @@
-// Configuration
-export { i18nConfig, type Locale } from './config';
+export * from "./config";
+export { getDictionary } from "./loader";
+export { TranslationProvider, useT } from "./client";
+export * from "./routing";
+export { getOtherLocale } from "./utils";
+export { withLang } from "./links";
+import { i18nConfig, type Locale } from "./config";
 
-// Message loading
-export { 
-  loadMessages, 
-  loadMessagesForLocale, 
-  getNestedValue, 
-  getMessage,
-  type MessageNamespace 
-} from './loader';
-
-// Server-side message provider
-export { 
-  ServerMessageProvider, 
-  createServerMessageProvider, 
-  useServerMessages 
-} from './server';
-
-// Client-side context (use sparingly)
-export { 
-  ClientI18nProvider, 
-  useClientMessages, 
-  useMessages, 
-  useMessage 
-} from './client';
+// Convenience exports
+export const supportedLocales = i18nConfig.locales as readonly Locale[];
+export const defaultLocale = i18nConfig.defaultLocale;

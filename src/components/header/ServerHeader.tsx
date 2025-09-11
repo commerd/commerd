@@ -1,33 +1,27 @@
-"use client";
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { useT } from '@/lib/i18n';
+import { i18nConfig, type Locale } from '@/lib/i18n/config';
 import { withLang } from '@/lib/i18n/links';
 import { Logo } from '@/components/ui';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
-export function Header() {
-  const { lang } = useParams<{ lang: string }>();
-  const t = useT<{ header: any }>().header;
-  const currentLang = typeof lang === "string" ? lang : "en";
+interface ServerHeaderProps {
+  lang: string;
+  t: any;
+}
+
+export function ServerHeader({ lang, t }: ServerHeaderProps) {
+  const currentLang = i18nConfig.locales.includes(lang as Locale) ? lang as Locale : 'en';
 
   // Generate navigation items based on current locale
   const navigationItems = [
     { href: withLang(currentLang, '/'), label: t.navigation.home },
     { href: withLang(currentLang, '/about'), label: t.navigation.about },
-    // Only include pages that actually exist
-    // { href: withLang(currentLang, '/services'), label: t.navigation.services },
-    // { href: withLang(currentLang, '/solutions'), label: t.navigation.solutions },
-    // { href: withLang(currentLang, '/blog'), label: t.navigation.blog },
-    // { href: withLang(currentLang, '/contact'), label: t.navigation.contact },
   ];
 
   return (
     <header className="bg-white shadow-lg border-b border-primary-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
-
           {/* Logo */}
           <Logo />
 

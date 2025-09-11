@@ -1,19 +1,26 @@
 import { SEOConfig } from './types';
+import { getLocalizedUrl, generateHreflangAlternates } from '../i18n/routing';
+import { type Locale } from '../i18n/config';
 
 export function generateCanonicalUrl(baseUrl: string, pathname: string, locale?: string): string {
   const cleanPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  const localePrefix = locale && locale !== 'en' ? `/${locale}` : '';
-  return `${baseUrl}${localePrefix}${cleanPath}`;
+  if (!locale) return `${baseUrl}${cleanPath}`;
+  
+  const localizedPath = getLocalizedUrl(cleanPath, locale as Locale);
+  return `${baseUrl}${localizedPath}`;
 }
 
 export function generateAlternateUrls(
   baseUrl: string,
   pathname: string,
-  locales: string[]
+  _locales: string[]
 ): Array<{ href: string; hrefLang: string }> {
-  return locales.map(locale => ({
-    href: generateCanonicalUrl(baseUrl, pathname, locale),
-    hrefLang: locale === 'en' ? 'x-default' : locale
+  const cleanPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const alternates = generateHreflangAlternates(cleanPath);
+  
+  return alternates.map(alt => ({
+    href: `${baseUrl}${alt.href}`,
+    hrefLang: alt.hrefLang === 'en' ? 'x-default' : alt.hrefLang
   }));
 }
 

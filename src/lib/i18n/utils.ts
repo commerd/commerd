@@ -1,4 +1,5 @@
 import { type Locale } from './config';
+import { getLocalizedUrl as getLocalizedUrlFromRouting, computeLocalizedUrl } from './routing';
 
 /**
  * Get localized URL for a given path and locale
@@ -7,11 +8,7 @@ import { type Locale } from './config';
  * @returns The localized URL
  */
 export function getLocalizedUrl(path: string, locale: Locale): string {
-  if (locale === 'en') {
-    return path === '/' ? '/' : path;
-  } else {
-    return path === '/' ? '/th' : `/th${path}`;
-  }
+  return getLocalizedUrlFromRouting(path, locale);
 }
 
 /**
@@ -24,13 +21,13 @@ export function getOtherLocale(currentLocale: Locale): Locale {
 }
 
 /**
- * Get the URL for the other locale
+ * Get the URL for the other locale (homepage only)
  * @param currentLocale - The current locale
- * @returns The URL for the other locale
+ * @returns The URL for the other locale homepage
  */
 export function getOtherLocaleUrl(currentLocale: Locale): string {
   const otherLocale = getOtherLocale(currentLocale);
-  return otherLocale === 'en' ? '/' : '/th';
+  return getLocalizedUrl('/', otherLocale);
 }
 
 /**
@@ -41,20 +38,5 @@ export function getOtherLocaleUrl(currentLocale: Locale): string {
  */
 export function getOtherLocaleUrlForPath(currentPath: string, currentLocale: Locale): string {
   const otherLocale = getOtherLocale(currentLocale);
-  
-  // Handle the case where currentPath is just the locale prefix (e.g., '/th' or '/en')
-  if (currentPath === `/${currentLocale}`) {
-    return otherLocale === 'en' ? '/' : '/th';
-  }
-  
-  // Remove locale prefix if present
-  let cleanPath = currentPath;
-  if (currentLocale === 'th' && currentPath.startsWith('/th')) {
-    cleanPath = currentPath.replace('/th', '') || '/';
-  } else if (currentLocale === 'en' && currentPath.startsWith('/en')) {
-    cleanPath = currentPath.replace('/en', '') || '/';
-  }
-  // If no locale prefix, use the path as-is
-  
-  return getLocalizedUrl(cleanPath, otherLocale);
+  return computeLocalizedUrl(currentPath, otherLocale);
 }

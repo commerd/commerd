@@ -1,15 +1,13 @@
+"use client";
 import Link from 'next/link';
-import { type Locale } from '@/lib/i18n/config';
-import { ServerMessageProvider } from '@/lib/i18n/server';
-import { getLocalizedUrl } from '@/lib/i18n/utils';
+import { useParams } from 'next/navigation';
+import { useT } from '@/lib/i18n';
+import { withLang } from '@/lib/i18n/links';
 
-interface FooterProps {
-  locale: Locale;
-  messages: ServerMessageProvider;
-}
-
-export function Footer({ locale, messages }: FooterProps) {
-  const t = messages.getMessages('footer');
+export function Footer() {
+  const { lang } = useParams<{ lang: string }>();
+  const t = useT<{ footer: any }>().footer;
+  const currentLang = typeof lang === "string" ? lang : "en";
 
 
   const socialLinks = [
@@ -21,7 +19,7 @@ export function Footer({ locale, messages }: FooterProps) {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white border-t border-green-200">
+    <footer className="bg-gray-900 text-white border-t border-primary-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Section */}
@@ -30,7 +28,7 @@ export function Footer({ locale, messages }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/about', locale)} 
+                  href={withLang(currentLang, '/about')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.company.about}
@@ -38,7 +36,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/careers', locale)} 
+                  href={withLang(currentLang, '/careers')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.company.careers}
@@ -46,7 +44,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/press', locale)} 
+                  href={withLang(currentLang, '/press')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.company.press}
@@ -54,7 +52,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/partners', locale)} 
+                  href={withLang(currentLang, '/partners')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.company.partners}
@@ -62,7 +60,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/contact', locale)} 
+                  href={withLang(currentLang, '/contact')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.company.contact}
@@ -77,7 +75,7 @@ export function Footer({ locale, messages }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/seo', locale)} 
+                  href={withLang(currentLang, '/seo')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.seo}
@@ -85,7 +83,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/cro', locale)} 
+                  href={withLang(currentLang, '/cro')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.cro}
@@ -93,7 +91,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/design', locale)} 
+                  href={withLang(currentLang, '/design')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.design}
@@ -101,7 +99,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/analytics', locale)} 
+                  href={withLang(currentLang, '/analytics')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.analytics}
@@ -109,7 +107,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/consulting', locale)} 
+                  href={withLang(currentLang, '/consulting')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.consulting}
@@ -124,7 +122,7 @@ export function Footer({ locale, messages }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/case-studies', locale)} 
+                  href={withLang(currentLang, '/case-studies')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.resources.caseStudies}
@@ -132,7 +130,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/blog', locale)} 
+                  href={withLang(currentLang, '/blog')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.resources.blog}
@@ -140,7 +138,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/guides', locale)} 
+                  href={withLang(currentLang, '/guides')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.resources.guides}
@@ -148,7 +146,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/tools', locale)} 
+                  href={withLang(currentLang, '/tools')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.resources.tools}
@@ -156,7 +154,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/webinars', locale)} 
+                  href={withLang(currentLang, '/webinars')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.resources.webinars}
@@ -171,7 +169,7 @@ export function Footer({ locale, messages }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={getLocalizedUrl('/privacy', locale)} 
+                  href={withLang(currentLang, '/privacy')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.legal.privacy}
@@ -179,7 +177,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/terms', locale)} 
+                  href={withLang(currentLang, '/terms')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.legal.terms}
@@ -187,7 +185,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/cookies', locale)} 
+                  href={withLang(currentLang, '/cookies')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.legal.cookies}
@@ -195,7 +193,7 @@ export function Footer({ locale, messages }: FooterProps) {
               </li>
               <li>
                 <Link 
-                  href={getLocalizedUrl('/disclaimer', locale)} 
+                  href={withLang(currentLang, '/disclaimer')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.legal.disclaimer}
@@ -214,10 +212,10 @@ export function Footer({ locale, messages }: FooterProps) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-green-400 transition-colors"
+                  className="text-gray-300 hover:text-primary-400 transition-colors"
                   aria-label={social.name}
                 >
-                  <span className="text-lg font-bold bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-green-500 transition-colors">
+                  <span className="text-lg font-bold bg-primary-600 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-primary-500 transition-colors">
                     {social.icon}
                   </span>
                 </a>

@@ -98,3 +98,19 @@ export function getMessage(
   console.warn(`Message key "${key}" not found and no fallback provided`);
   return key; // Return the key itself as last resort
 }
+
+/**
+ * Get dictionary for a specific locale - loads all namespaces
+ */
+export async function getDictionary(locale: Locale): Promise<Record<string, any>> {
+  const namespaces: MessageNamespace[] = ['common', 'header', 'footer', 'home', 'about'];
+  const messages = await loadMessagesForLocale(locale, namespaces);
+  
+  // Flatten the messages into a single dictionary
+  const dict: Record<string, any> = {};
+  Object.entries(messages).forEach(([namespace, messages]) => {
+    dict[namespace] = messages;
+  });
+  
+  return dict;
+}
