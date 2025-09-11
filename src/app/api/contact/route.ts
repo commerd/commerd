@@ -21,21 +21,61 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Use the regular reCAPTCHA verification endpoint
-    const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    // Get access token using service account
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY || '{}');
+    
+    // Create JWT for service account authentication
+    const jwt = require('jsonwebtoken');
+    const now = Math.floor(Date.now() / 1000);
+    const payload = {
+      iss: serviceAccount.client_email,
+      scope: 'https://www.googleapis.com/auth/cloud-platform',
+      aud: 'https://oauth2.googleapis.com/token',
+      exp: now + 3600,
+      iat: now,
+    };
+    
+    const token = jwt.sign(payload, serviceAccount.private_key, { algorithm: 'RS256' });
+    
+    // Get access token
+    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
-        secret: '6LcyvMUrAAAAABYwKBx8XOaVvM4WPo08eT8xB5v', // Using test secret key
-        response: recaptchaToken,
+        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+        assertion: token,
       }),
     });
+    
+    const { access_token } = await tokenResponse.json();
+    
+    // Use Enterprise reCAPTCHA assessment endpoint
+    const projectId = 'golden-shine-471813-t7';
+    const recaptchaResponse = await fetch(
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${access_token}`,
+        },
+        body: JSON.stringify({
+          event: {
+            token: recaptchaToken,
+            siteKey: '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v',
+            userAgent: request.headers.get('user-agent') || '',
+            userIpAddress: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '',
+            expectedAction: 'CONTACT_FORM',
+          },
+        }),
+      }
+    );
 
     const recaptchaResult = await recaptchaResponse.json();
 
-    if (!recaptchaResult.success) {
+    // Check if token is valid and score is acceptable
+    if (!recaptchaResult.tokenProperties?.valid || 
+        (recaptchaResult.riskAnalysis?.score && recaptchaResult.riskAnalysis.score < 0.5)) {
       return NextResponse.json(
         { error: 'reCAPTCHA verification failed' },
         { status: 400 }
