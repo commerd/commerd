@@ -5,22 +5,11 @@ import { ROUTES } from "@/lib/routes";
 
 export const dynamic = "force-static";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = DEFAULT_SEO_CONFIG.siteUrl;
-
-  // Start with static routes
-  let allRoutes = [...ROUTES];
-
-  // TODO: Add dynamic routes here when you have them
-  // Example: blog posts, products, etc.
-  // const blogRes = await fetch(`${siteUrl}/api/posts`);
-  // const posts = await blogRes.json();
-  // allRoutes.push(...posts.map((p: any) => `/blog/${p.slug}`));
-
-  // Build final sitemap entries
   const sitemap: MetadataRoute.Sitemap = [];
 
-  allRoutes.forEach((path) => {
+  ROUTES.forEach((path) => {
     const alternates = Object.fromEntries(
       i18nConfig.locales.map((l) => [l, `${siteUrl}/${l}${path}`])
     );

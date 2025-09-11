@@ -1,7 +1,6 @@
 // src/app/robots.ts
 import type { MetadataRoute } from "next";
 import { DEFAULT_SEO_CONFIG } from "@/lib/seo/constants";
-import { i18nConfig } from "@/lib/i18n/config";
 
 export const dynamic = "force-static";
 
