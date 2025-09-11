@@ -32,12 +32,15 @@ export function ContactForm({ labels }: ContactFormProps) {
     setStatus('sending')
     setErrorMessage('')
 
-    // Get reCAPTCHA token
-    const recaptchaToken = await recaptchaRef.current?.executeAsync()
-    if (!recaptchaToken) {
-      setErrorMessage('Please complete the reCAPTCHA verification')
-      setStatus('error')
-      return
+    // Only require reCAPTCHA in production
+    let recaptchaToken = null
+    if (process.env.NODE_ENV === 'production') {
+      recaptchaToken = await recaptchaRef.current?.executeAsync()
+      if (!recaptchaToken) {
+        setErrorMessage('Please complete the reCAPTCHA verification')
+        setStatus('error')
+        return
+      }
     }
 
     try {
@@ -62,11 +65,11 @@ export function ContactForm({ labels }: ContactFormProps) {
         setStatus('error')
         recaptchaRef.current?.reset()
       }
-    } catch (error) {
-      setErrorMessage('Failed to send message. Please try again.')
-      setStatus('error')
-      recaptchaRef.current?.reset()
-    }
+        } catch {
+          setErrorMessage('Failed to send message. Please try again.')
+          setStatus('error')
+          recaptchaRef.current?.reset()
+        }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -88,7 +91,7 @@ export function ContactForm({ labels }: ContactFormProps) {
           {labels.success || 'Message Sent!'}
         </h3>
         <p className="text-gray-600 mb-6">
-          We'll get back to you within 24 hours.
+          We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setStatus('idle')}
@@ -174,14 +177,16 @@ export function ContactForm({ labels }: ContactFormProps) {
         </div>
       )}
 
-      {/* reCAPTCHA */}
-      <div className="flex justify-center">
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v'}
-          size="invisible"
-        />
-      </div>
+      {/* reCAPTCHA - only in production */}
+      {process.env.NODE_ENV === 'production' && (
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v'}
+            size="invisible"
+          />
+        </div>
+      )}
 
       <button
         type="submit"
