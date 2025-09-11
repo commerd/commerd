@@ -19,16 +19,5 @@
   "submit": "Submit",
   "reset": "Reset",
   "home": "Home",
-  "about": "About",
-  "sitemap": "Sitemap",
-  "homeDescription": "Premium Ecommerce Solutions for Thai Businesses",
-  "aboutDescription": "Learn more about our services and expertise",
-  "sitemapDescription": "Find all pages on our website",
-  "visitPage": "Visit Page",
-  "sitemapInfo": "Sitemap Information",
-  "lastUpdated": "Last Updated",
-  "totalPages": "Total Pages",
-  "pages": "pages",
-  "availableLanguages": "Available Languages",
-  "current": "Current"
+  "about": "About"
 }
