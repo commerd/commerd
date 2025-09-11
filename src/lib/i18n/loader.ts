@@ -1,7 +1,7 @@
 import { type Locale } from './config';
 
 // Type for message namespaces
-export type MessageNamespace = 'common' | 'header' | 'footer' | 'home' | 'about' | 'seo';
+export type MessageNamespace = 'common' | 'header' | 'footer' | 'home' | 'about' | 'seo' | 'contact';
 
 // Cache for loaded messages to avoid repeated file system reads
 const messageCache = new Map<string, any>();

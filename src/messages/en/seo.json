@@ -1,0 +1,39 @@
+{
+  "title": "Professional SEO Services",
+  "description": "Boost your website visibility and drive organic traffic with our comprehensive SEO services. Expert keyword research, on-page optimization, and technical SEO.",
+  "hero": {
+    "title": "SEO Services",
+    "subtitle": "Boost your website visibility and drive organic traffic with our professional SEO services."
+  },
+  "services": {
+    "keyword_research": {
+      "title": "Keyword Research",
+      "description": "Comprehensive keyword analysis to target the right search terms for your business."
+    },
+    "on_page": {
+      "title": "On-Page SEO",
+      "description": "Optimize your website content, meta tags, and structure for better search rankings."
+    },
+    "link_building": {
+      "title": "Link Building",
+      "description": "Build high-quality backlinks to increase your domain authority and rankings."
+    },
+    "technical": {
+      "title": "Technical SEO",
+      "description": "Fix technical issues that prevent search engines from crawling and indexing your site."
+    },
+    "local": {
+      "title": "Local SEO",
+      "description": "Optimize your business for local search results and Google My Business."
+    },
+    "analytics": {
+      "title": "SEO Analytics",
+      "description": "Track and measure your SEO performance with detailed analytics and reporting."
+    }
+  },
+  "cta": {
+    "title": "Ready to Boost Your Rankings?",
+    "subtitle": "Get a free SEO audit and discover how we can help improve your website visibility.",
+    "button": "Get Free SEO Audit"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Contact Us",
+  "description": "Get in touch with our team. We're here to help with your inquiries and provide the support you need.",
+  "hero": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team. We're here to help with your inquiries and provide the support you need."
+  },
+  "info": {
+    "title": "Get in Touch",
+    "email": {
+      "title": "Email Us",
+      "description": "Send us your inquiries and we'll get back to you as soon as possible."
+    },
+    "response_time": {
+      "title": "Response Time",
+      "description": "We typically respond to all inquiries within 24 hours during business days."
+    },
+    "languages": {
+      "title": "Languages",
+      "description": "We provide support in English and Thai to serve you better."
+    }
+  },
+  "form": {
+    "title": "Send us a Message",
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Message Sent Successfully!",
+    "error": "Failed to send message. Please try again.",
+    "note": "We'll respond to your inquiry within 24 hours."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions or contact us directly.",
+    "items": [
+      {
+        "question": "How quickly do you respond to inquiries?",
+        "answer": "We typically respond to all inquiries within 24 hours during business days. For urgent matters, please mention it in your message."
+      },
+      {
+        "question": "What information should I include in my inquiry?",
+        "answer": "Please provide as much detail as possible about your needs, including your project requirements, timeline, and any specific questions you have."
+      },
+      {
+        "question": "Do you offer consultations?",
+        "answer": "Yes, we offer free initial consultations to discuss your project needs and how we can help achieve your goals."
+      },
+      {
+        "question": "What services do you provide?",
+        "answer": "We provide a wide range of digital services including web development, SEO optimization, and digital marketing solutions."
+      }
+    ]
+  }
+}

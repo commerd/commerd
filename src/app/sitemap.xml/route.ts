@@ -11,11 +11,8 @@ export async function GET() {
   const routes = [
     '/',
     '/about',
-    // Add more routes here as you create them:
-    // '/products',
-    // '/services', 
-    // '/contact',
-    // '/blog',
+    '/seo',
+    '/contact',
   ]
 
   // Generate XML manually for proper formatting
