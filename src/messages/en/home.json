@@ -30,5 +30,10 @@
         "icon": "A"
       }
     ]
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Let's transform your digital presence with our proven strategies.",
+    "button": "Book Consultation"
   }
 }

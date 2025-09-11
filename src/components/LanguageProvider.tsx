@@ -7,7 +7,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const lang = params?.lang as string || 'en';
 
   useEffect(() => {
-    // Set the language attribute on the html element
     document.documentElement.lang = lang;
   }, [lang]);
 
