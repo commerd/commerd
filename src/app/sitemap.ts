@@ -3,25 +3,33 @@ import type { MetadataRoute } from "next";
 const SITE = "https://commerd.com";
 const LOCALES = ["en", "th"] as const;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Tells Next to generate multiple sitemap files
+export async function generateSitemaps() {
+  return LOCALES.map((lang) => ({ id: lang }));
+}
+
+// Generates each individual sitemap (e.g. /en/sitemap.xml, /th/sitemap.xml)
+export default async function sitemap({
+  id,
+}: {
+  id: string;
+}): Promise<MetadataRoute.Sitemap> {
+  const validLang = LOCALES.includes(id as any) ? id : "en";
+
   const routes = [
     { path: "/" },
     { path: "/about" },
   ];
 
-  return LOCALES.flatMap((locale) =>
-    routes.map((route) => ({
-      url: `${SITE}/${locale}${route.path}`,
-      lastModified: new Date(),
-      changeFrequency: route.path === "/" ? "daily" : "weekly",
-      priority: route.path === "/" ? 1 : 0.8,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${SITE}/${l}${route.path}`]).concat([
-            ["x-default", `${SITE}/en${route.path}`],
-          ])
-        ),
-      },
-    }))
-  );
+  return routes.map((r) => ({
+    url: `${SITE}/${validLang}${r.path}`,
+    lastModified: new Date(),
+    alternates: {
+      languages: Object.fromEntries(
+        LOCALES.map((l) => [l, `${SITE}/${l}${r.path}`]).concat([
+          ["x-default", `${SITE}/en${r.path}`],
+        ])
+      ),
+    },
+  }));
 }
