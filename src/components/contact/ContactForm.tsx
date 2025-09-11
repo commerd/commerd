@@ -32,15 +32,12 @@ export function ContactForm({ labels }: ContactFormProps) {
     setStatus('sending')
     setErrorMessage('')
 
-    // Only require reCAPTCHA in production
-    let recaptchaToken = null
-    if (process.env.NODE_ENV === 'production') {
-      recaptchaToken = await recaptchaRef.current?.executeAsync()
-      if (!recaptchaToken) {
-        setErrorMessage('Please complete the reCAPTCHA verification')
-        setStatus('error')
-        return
-      }
+    // Get reCAPTCHA token
+    const recaptchaToken = await recaptchaRef.current?.executeAsync()
+    if (!recaptchaToken) {
+      setErrorMessage('Please complete the reCAPTCHA verification')
+      setStatus('error')
+      return
     }
 
     try {
@@ -177,16 +174,14 @@ export function ContactForm({ labels }: ContactFormProps) {
         </div>
       )}
 
-      {/* reCAPTCHA - only in production */}
-      {process.env.NODE_ENV === 'production' && (
-        <div className="flex justify-center">
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v'}
-            size="invisible"
-          />
-        </div>
-      )}
+      {/* reCAPTCHA */}
+      <div className="flex justify-center">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey="6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v"
+          size="invisible"
+        />
+      </div>
 
       <button
         type="submit"

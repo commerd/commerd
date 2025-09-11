@@ -13,40 +13,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify reCAPTCHA Enterprise token (only in production)
-    if (process.env.NODE_ENV === 'production') {
-      if (!recaptchaToken) {
-        return NextResponse.json(
-          { error: 'reCAPTCHA verification required' },
-          { status: 400 }
-        );
-      }
-
-      const projectId = 'golden-shine-471813-t7'; // Your project ID from the URL
-      const recaptchaResponse = await fetch(
-        `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments?key=${process.env.GOOGLE_API_KEY}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            event: {
-              token: recaptchaToken,
-              siteKey: '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v',
-            },
-          }),
-        }
+    // Verify reCAPTCHA token (using regular reCAPTCHA v3)
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification required' },
+        { status: 400 }
       );
+    }
 
-      const recaptchaResult = await recaptchaResponse.json();
+    // Use the regular reCAPTCHA verification endpoint
+    const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: '6LcyvMUrAAAAABYwKBx8XOaVvM4WPo08eT8xB5v', // Using test secret key
+        response: recaptchaToken,
+      }),
+    });
 
-      if (!recaptchaResult.riskAnalysis || recaptchaResult.riskAnalysis.score < 0.5) {
-        return NextResponse.json(
-          { error: 'reCAPTCHA verification failed' },
-          { status: 400 }
-        );
-      }
+    const recaptchaResult = await recaptchaResponse.json();
+
+    if (!recaptchaResult.success) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification failed' },
+        { status: 400 }
+      );
     }
 
     // Validate email format
