@@ -1,19 +1,45 @@
-import { generateMetadata as generateSEOMetadata } from "@/components/seo";
+import type { Metadata } from "next";
 import { getSEOContent } from "@/lib/seo/content";
 import { getDictionary } from "@/lib/i18n";
-import { type Locale } from "@/lib/i18n/config";
+import { type Locale, i18nConfig } from "@/lib/i18n/config";
 import { PageSEO } from "@/components/seo";
+import { DEFAULT_SEO_CONFIG } from "@/lib/seo/constants";
+import { getLocalizedUrl } from "@/lib/i18n/routing";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
 // Generate metadata for this page
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params;
   const locale = lang as Locale;
   const seoContent = getSEOContent('about', locale);
-  return generateSEOMetadata(seoContent, locale, `/${locale}/about`);
+  const baseUrl = DEFAULT_SEO_CONFIG.siteUrl;
+  
+  // Generate canonical URL for this locale
+  const canonicalPath = getLocalizedUrl('/about', locale);
+  const canonical = `${baseUrl}${canonicalPath}`;
+  
+  // Generate hreflang alternates
+  const alternates: Record<string, string> = {};
+  i18nConfig.locales.forEach(altLocale => {
+    const altPath = getLocalizedUrl('/about', altLocale);
+    alternates[altLocale] = `${baseUrl}${altPath}`;
+  });
+  
+  // Add x-default pointing to English
+  const defaultPath = getLocalizedUrl('/about', 'en');
+  alternates['x-default'] = `${baseUrl}${defaultPath}`;
+
+  return {
+    title: seoContent.title,
+    description: seoContent.description,
+    alternates: {
+      canonical,
+      languages: alternates,
+    },
+  };
 }
 
 export default async function LocalizedAboutPage({ params }: PageProps) {
