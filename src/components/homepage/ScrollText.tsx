@@ -21,14 +21,14 @@ export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProp
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start center", "end center"]
   });
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      // Wait even longer before starting text transitions - show full content first
-      // Map scroll progress from 0.4-0.85 to 0-1 for text blocks
-      const adjustedProgress = Math.max(0, Math.min(1, (latest - 0.4) / 0.45));
+      // Start text transitions when component is fully centered
+      // Map scroll progress from 0.2-0.8 to 0-1 for text blocks
+      const adjustedProgress = Math.max(0, Math.min(1, (latest - 0.2) / 0.6));
       const blockIndex = Math.floor(adjustedProgress * textBlocks.length);
       setCurrentBlockIndex(Math.min(blockIndex, textBlocks.length - 1));
     });
@@ -47,7 +47,8 @@ export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProp
       <motion.div
         className="sticky top-0 h-screen w-full overflow-hidden"
         style={{
-          y: useTransform(scrollYProgress, [0.4, 0.85], [0, -100])
+          // Remove vertical movement to prevent slipping
+          y: 0
         }}
       >
         {/* Background */}
