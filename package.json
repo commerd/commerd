@@ -5,16 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
-    "build": "next build",
-    "build:turbo": "next build --turbopack",
+    "build": "next build && node scripts/generate-sitemap.js",
+    "build:turbo": "next build --turbopack && node scripts/generate-sitemap.js",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
     "motion": "^12.23.12",
     "next": "15.5.2",
-    "next-sitemap": "^4.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },

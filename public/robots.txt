@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+Host: https://commerd.com
+Sitemap: https://commerd.com/sitemap.xml
