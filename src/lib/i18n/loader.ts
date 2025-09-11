@@ -14,6 +14,12 @@ export async function loadMessages(
   locale: Locale,
   namespace: MessageNamespace
 ): Promise<Record<string, any>> {
+  // Defensive fix: ignore namespaces containing dots (asset-like paths)
+  if (namespace.includes('.')) {
+    console.warn(`Skipping namespace with dot: ${namespace}`);
+    return {};
+  }
+
   const cacheKey = `${locale}/${namespace}`;
   
   // Return cached messages if available
@@ -58,7 +64,10 @@ export async function loadMessagesForLocale(
   locale: Locale,
   namespaces: MessageNamespace[]
 ): Promise<Record<MessageNamespace, Record<string, any>>> {
-  const promises = namespaces.map(async (namespace) => {
+  // Filter out namespaces containing dots (asset-like paths)
+  const safeNamespaces = namespaces.filter(ns => !ns.includes("."));
+  
+  const promises = safeNamespaces.map(async (namespace) => {
     const messages = await loadMessages(locale, namespace);
     return [namespace, messages] as const;
   });

@@ -1,20 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { supportedLocales, defaultLocale } from './lib/i18n';
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  
-  // Skip middleware for static files and API routes
-  if (
-    pathname.startsWith('/_next/') ||
-    pathname.startsWith('/api/') ||
-    pathname.includes('.') ||
-    pathname === '/favicon.ico' ||
-    pathname === '/sitemap.xml' ||
-    pathname === '/robots.txt' ||
-    pathname.endsWith('/sitemap.xml') ||
-    pathname.endsWith('/robots.txt')
-  ) {
+  const { pathname } = request.nextUrl;
+
+  // Belt-and-braces guard - immediately skip XML/TXT files
+  if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) {
     return NextResponse.next();
   }
 
@@ -42,16 +34,9 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(new URL(`/${defaultLocale}${pathname === '/' ? '' : pathname}`, request.url));
 }
 
+// Exact pattern from next-intl docs - excludes dot paths
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - other static assets
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)',
+    '/((?!api|_next|_vercel|.*\\..*).*)',
   ],
 };
