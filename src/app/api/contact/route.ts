@@ -21,51 +21,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get access token using service account
-    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY || '{}');
-    
-    // Create JWT for service account authentication
-    const jwt = require('jsonwebtoken');
-    const now = Math.floor(Date.now() / 1000);
-    const payload = {
-      iss: serviceAccount.client_email,
-      scope: 'https://www.googleapis.com/auth/cloud-platform',
-      aud: 'https://oauth2.googleapis.com/token',
-      exp: now + 3600,
-      iat: now,
-    };
-    
-    const token = jwt.sign(payload, serviceAccount.private_key, { algorithm: 'RS256' });
-    
-    // Get access token
-    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-        assertion: token,
-      }),
-    });
-    
-    const { access_token } = await tokenResponse.json();
-    
-    // Use Enterprise reCAPTCHA assessment endpoint
-    const projectId = 'golden-shine-471813-t7';
+    // Use Enterprise reCAPTCHA assessment endpoint with API key
     const recaptchaResponse = await fetch(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments`,
+      `https://recaptchaenterprise.googleapis.com/v1/projects/golden-shine-471813-t7/assessments?key=${process.env.GOOGLE_API_KEY}`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${access_token}`,
         },
         body: JSON.stringify({
           event: {
             token: recaptchaToken,
-            siteKey: '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v',
-            userAgent: request.headers.get('user-agent') || '',
-            userIpAddress: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '',
             expectedAction: 'CONTACT_FORM',
+            siteKey: '6LcyvMUrAAAAANTt4qju8lXOVvM4WPoO8eT8xB5v',
           },
         }),
       }
