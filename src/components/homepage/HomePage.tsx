@@ -1,3 +1,6 @@
+import { Carousel } from "./Carousel";
+import { ScrollText } from "./ScrollText";
+
 interface HomePageProps {
   t: any; // Will be properly typed from the dictionary
 }
@@ -99,6 +102,19 @@ export function HomePage({ t }: HomePageProps) {
           </div>
         </div>
       </section>
+
+      {/* Carousel Section - Scroll-based horizontal carousel */}
+      <Carousel 
+        items={t.carousel.items}
+        className="bg-primary-600"
+      />
+
+      {/* Scroll Text Section - Scroll-based text transitions */}
+      <ScrollText 
+        title={t.scrollText.title}
+        textBlocks={t.scrollText.blocks}
+        className="bg-gray-900"
+      />
 
       {/* Features Section - Below the Fold */}
       <section id="learn-more" className="py-20 bg-white">

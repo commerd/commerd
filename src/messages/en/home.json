@@ -35,5 +35,57 @@
     "title": "Ready to Get Started?",
     "subtitle": "Let's transform your digital presence with our proven strategies.",
     "button": "Book Consultation"
+  },
+  "carousel": {
+    "title": "Our Expertise",
+    "items": [
+      {
+        "id": "design",
+        "title": "Scandinavian Design",
+        "description": "Clean, functional design principles that convert visitors into customers with proven results.",
+        "icon": "🎨"
+      },
+      {
+        "id": "thai-market",
+        "title": "Thai Market Expertise",
+        "description": "Deep understanding of Thai consumer behavior and local business practices for maximum impact.",
+        "icon": "🇹🇭"
+      },
+      {
+        "id": "industry",
+        "title": "Industry Experience",
+        "description": "Proven results across jewelry, pharmaceuticals, banking, and diverse business sectors.",
+        "icon": "💼"
+      },
+      {
+        "id": "data-driven",
+        "title": "Data-Driven Growth",
+        "description": "Advanced SEO, CRO, and business intelligence for measurable, sustainable results.",
+        "icon": "📊"
+      }
+    ]
+  },
+  "scrollText": {
+    "title": "Why Choose Commerd?",
+    "blocks": [
+      {
+        "id": "expertise",
+        "header": "Proven Expertise",
+        "subHeaders": ["Scandinavian Design", "Thai Market Knowledge", "Industry Experience"],
+        "content": "We combine Scandinavian design principles with deep Thai market expertise to create ecommerce solutions that actually work. Our team has helped hundreds of Thai businesses achieve remarkable growth."
+      },
+      {
+        "id": "results",
+        "header": "Measurable Results",
+        "subHeaders": ["98% Success Rate", "500+ Projects", "24/7 Support"],
+        "content": "Our data-driven approach ensures every project delivers measurable results. From SEO optimization to conversion rate improvements, we track and optimize every aspect of your digital presence."
+      },
+      {
+        "id": "innovation",
+        "header": "Cutting-Edge Innovation",
+        "subHeaders": ["Latest Technology", "AI-Powered Insights", "Future-Proof Solutions"],
+        "content": "We stay ahead of the curve with the latest technology and innovative approaches. Our solutions are built to scale and adapt to the ever-changing digital landscape."
+      }
+    ]
   }
 }
