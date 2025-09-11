@@ -23,7 +23,8 @@ export function Carousel({ items, className = "" }: CarouselProps) {
     offset: ["start end", "end start"]
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+  // Only start horizontal scroll when component is fully in view
+  const x = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "-100%"]);
 
   return (
     <div 
@@ -34,7 +35,7 @@ export function Carousel({ items, className = "" }: CarouselProps) {
       <motion.div
         className="sticky top-0 h-screen w-full overflow-hidden"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [0, -100])
+          y: useTransform(scrollYProgress, [0.1, 0.9], [0, -100])
         }}
       >
         {/* Background overlay */}
@@ -84,7 +85,7 @@ export function Carousel({ items, className = "" }: CarouselProps) {
           <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-white rounded-full"
-              style={{ width: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
+              style={{ width: useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]) }}
             />
           </div>
         </div>

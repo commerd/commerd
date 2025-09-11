@@ -26,8 +26,10 @@ export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProp
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      // Calculate which text block should be active based on scroll progress
-      const blockIndex = Math.floor(latest * textBlocks.length);
+      // Only start text transitions when component is fully in view
+      // Map scroll progress from 0.1-0.9 to 0-1 for text blocks
+      const adjustedProgress = Math.max(0, Math.min(1, (latest - 0.1) / 0.8));
+      const blockIndex = Math.floor(adjustedProgress * textBlocks.length);
       setCurrentBlockIndex(Math.min(blockIndex, textBlocks.length - 1));
     });
 
@@ -45,7 +47,7 @@ export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProp
       <motion.div
         className="sticky top-0 h-screen w-full overflow-hidden"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [0, -100])
+          y: useTransform(scrollYProgress, [0.1, 0.9], [0, -100])
         }}
       >
         {/* Background */}
