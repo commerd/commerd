@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface TextBlock {
   id: string;
@@ -18,19 +18,14 @@ interface ScrollTextProps {
 export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentBlockIndex, setCurrentBlockIndex] = useState(0);
-  const [isInView, setIsInView] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  // const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
-
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      setIsInView(latest > 0 && latest < 1);
-      
       // Calculate which text block should be active based on scroll progress
       const blockIndex = Math.floor(latest * textBlocks.length);
       setCurrentBlockIndex(Math.min(blockIndex, textBlocks.length - 1));
@@ -44,99 +39,102 @@ export function ScrollText({ title, textBlocks, className = "" }: ScrollTextProp
   return (
     <div 
       ref={containerRef}
-      className={`relative h-screen w-full overflow-hidden ${className}`}
-      style={{ 
-        position: 'sticky',
-        top: 0,
-        zIndex: 10
-      }}
+      className={`relative ${className}`}
+      style={{ height: '200vh' }}
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
-      
-      {/* Content container */}
-      <div className="relative z-20 h-full flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          {/* Main title */}
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold text-white mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ 
-              opacity: isInView ? 1 : 0,
-              y: isInView ? 0 : 50
-            }}
-            transition={{ duration: 0.8 }}
-          >
-            {title}
-          </motion.h2>
-
-          {/* Text content that changes based on scroll */}
-          <motion.div
-            key={currentBlock.id}
-            className="space-y-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Header */}
-            <h3 className="text-3xl md:text-4xl font-bold text-primary-400 mb-6">
-              {currentBlock.header}
-            </h3>
-
-            {/* Sub headers */}
-            <div className="space-y-4 mb-8">
-              {currentBlock.subHeaders.map((subHeader, index) => (
-                <motion.h4
-                  key={index}
-                  className="text-xl md:text-2xl text-gray-300"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    duration: 0.4,
-                    delay: index * 0.1
-                  }}
-                >
-                  {subHeader}
-                </motion.h4>
-              ))}
-            </div>
-
-            {/* Content */}
-            <motion.p
-              className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6,
-                delay: 0.3
+      <motion.div
+        className="sticky top-0 h-screen w-full overflow-hidden"
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], [0, -100])
+        }}
+      >
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
+        
+        {/* Content container */}
+        <div className="relative z-20 h-full flex items-center justify-center">
+          <div className="max-w-4xl mx-auto px-8 text-center">
+            {/* Main title */}
+            <motion.h2
+              className="text-4xl md:text-6xl font-bold text-white mb-16"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ 
+                opacity: 1,
+                y: 0
               }}
+              transition={{ duration: 0.8 }}
             >
-              {currentBlock.content}
-            </motion.p>
-          </motion.div>
+              {title}
+            </motion.h2>
 
-          {/* Progress indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <div className="flex space-x-2">
-              {textBlocks.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentBlockIndex 
-                      ? 'bg-primary-400 scale-125' 
-                      : 'bg-white/30'
-                  }`}
-                />
-              ))}
+            {/* Text content that changes based on scroll */}
+            <motion.div
+              key={currentBlock.id}
+              className="space-y-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Header */}
+              <h3 className="text-3xl md:text-4xl font-bold text-primary-400 mb-6">
+                {currentBlock.header}
+              </h3>
+
+              {/* Sub headers */}
+              <div className="space-y-4 mb-8">
+                {currentBlock.subHeaders.map((subHeader, index) => (
+                  <motion.h4
+                    key={index}
+                    className="text-xl md:text-2xl text-gray-300"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ 
+                      duration: 0.4,
+                      delay: index * 0.1
+                    }}
+                  >
+                    {subHeader}
+                  </motion.h4>
+                ))}
+              </div>
+
+              {/* Content */}
+              <motion.p
+                className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6,
+                  delay: 0.3
+                }}
+              >
+                {currentBlock.content}
+              </motion.p>
+            </motion.div>
+
+            {/* Progress indicators */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+              <div className="flex space-x-2">
+                {textBlocks.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentBlockIndex 
+                        ? 'bg-primary-400 scale-125' 
+                        : 'bg-white/30'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 right-8 z-30 text-white/60 text-sm">
-        Scroll to continue
-      </div>
+        {/* Scroll hint */}
+        <div className="absolute bottom-8 right-8 z-30 text-white/60 text-sm">
+          Scroll to continue
+        </div>
+      </motion.div>
     </div>
   );
 }
