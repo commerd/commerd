@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
-    "build": "next build && node scripts/generate-sitemap.js",
-    "build:turbo": "next build --turbopack && node scripts/generate-sitemap.js",
+    "build": "next build",
+    "build:turbo": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "postbuild": "node scripts/generate-sitemap.js"
+    "lint": "eslint"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
