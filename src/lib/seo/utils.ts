@@ -49,3 +49,38 @@ export function validateSEOConfig(seo: SEOConfig): SEOConfig {
 export function generateStructuredDataUrl(baseUrl: string, pathname: string): string {
   return `${baseUrl}${pathname}`;
 }
+
+export function generateMetadata(seo: SEOConfig, locale: string, pathname: string) {
+  const canonical = seo.canonical || generateCanonicalUrl(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000', pathname, locale);
+  
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords?.join(', '),
+    canonical,
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: canonical,
+      type: seo.ogType || 'website',
+      images: seo.ogImage ? [{ url: seo.ogImage }] : undefined,
+    },
+    twitter: {
+      card: seo.twitterCard || 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+      images: seo.ogImage ? [seo.ogImage] : undefined,
+    },
+    alternates: {
+      canonical,
+      languages: seo.alternateLanguages?.reduce((acc, alt) => {
+        acc[alt.hrefLang] = alt.href;
+        return acc;
+      }, {} as Record<string, string>),
+    },
+    robots: {
+      index: !seo.noindex,
+      follow: !seo.nofollow,
+    },
+  };
+}

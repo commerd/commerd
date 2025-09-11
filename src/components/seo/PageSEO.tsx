@@ -8,7 +8,7 @@ interface PageSEOComponentProps {
   seo: SEOConfig;
   locale?: string;
   pathname?: string;
-  children: ReactNode;
+  children?: ReactNode;
   breadcrumbs?: Array<{
     name: string;
     url: string;

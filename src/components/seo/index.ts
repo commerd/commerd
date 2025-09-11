@@ -1,7 +1,6 @@
 // Core SEO components
-export { SEOHead, generateMetadata } from './SEOHead';
-export { SEOProvider } from './SEOProvider';
 export { PageSEO } from './PageSEO';
+export { generateMetadata } from '@/lib/seo/utils';
 
 // Structured data components
 export {

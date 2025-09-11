@@ -31,9 +31,7 @@ export default async function LocalizedAboutPage({ params }: PageProps) {
         locale={locale}
         pathname={`/${locale}/about`}
         seo={seoContent}
-      >
-        <></>
-      </PageSEO>
+      />
       
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
