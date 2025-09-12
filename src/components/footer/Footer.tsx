@@ -3,11 +3,13 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useT } from '@/lib/i18n';
 import { withLang } from '@/lib/i18n/links';
+import { getTextClasses } from '@/lib/utils/fonts';
+import { type Locale } from '@/lib/i18n/config';
 
 export function Footer() {
   const { lang } = useParams<{ lang: string }>();
   const t = useT<{ footer: any }>().footer;
-  const currentLang = typeof lang === "string" ? lang : "en";
+  const currentLang = (typeof lang === "string" ? lang : "en") as Locale;
 
 
   const socialLinks = [
@@ -24,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.company.title}</h3>
+            <h3 className={getTextClasses(currentLang, 'h3', "text-lg mb-4")}>{t.company.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -71,7 +73,7 @@ export function Footer() {
 
           {/* Services Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.services.title}</h3>
+            <h3 className={getTextClasses(currentLang, 'h3', "text-lg mb-4")}>{t.services.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -118,7 +120,7 @@ export function Footer() {
 
           {/* Resources Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.resources.title}</h3>
+            <h3 className={getTextClasses(currentLang, 'h3', "text-lg mb-4")}>{t.resources.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -165,7 +167,7 @@ export function Footer() {
 
           {/* Legal Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.legal.title}</h3>
+            <h3 className={getTextClasses(currentLang, 'h3', "text-lg mb-4")}>{t.legal.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -204,7 +206,7 @@ export function Footer() {
 
           {/* Social Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">{t.social.title}</h3>
+            <h3 className={getTextClasses(currentLang, 'h3', "text-lg mb-4")}>{t.social.title}</h3>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
                 <a

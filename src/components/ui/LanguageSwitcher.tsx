@@ -23,10 +23,10 @@ export default function LanguageSwitcher() {
           <button
             key={l}
             onClick={() => switchTo(l)}
-            className={`px-2 py-1 text-sm rounded transition-colors ${
+            className={`px-2 py-1 text-sm rounded transition-colors cursor-pointer ${
               l === current 
-                ? "bg-primary-100 text-primary-800" 
-                : "bg-primary-600 text-white hover:bg-primary-700"
+                ? "bg-primary-600 text-white" 
+                : "bg-primary-100 text-primary-800 hover:bg-primary-200"
             }`}
           >
 {i18nConfig.localeNames[l as keyof typeof i18nConfig.localeNames]}

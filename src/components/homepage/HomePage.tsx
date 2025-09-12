@@ -1,11 +1,18 @@
+"use client";
+
 import { Carousel } from "./Carousel";
 import { ScrollText } from "./ScrollText";
+import { useParams } from "next/navigation";
+import { getTextClasses } from "@/lib/utils/fonts";
+import { type Locale } from "@/lib/i18n/config";
 
 interface HomePageProps {
   t: any; // Will be properly typed from the dictionary
 }
 
 export function HomePage({ t }: HomePageProps) {
+  const { lang } = useParams<{ lang: string }>();
+  const locale = (typeof lang === "string" ? lang : "en") as Locale;
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50">
       {/* Hero Section - Above the Fold */}
@@ -28,13 +35,13 @@ export function HomePage({ t }: HomePageProps) {
               </div>
 
               {/* Main Headline - H1 for SEO */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+              <h1 className={getTextClasses(locale, 'h1', "text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-tight")}>
                 <span className="block">{t.title.split(' ').slice(0, 2).join(' ')}</span>
                 <span className="block text-primary-600">{t.title.split(' ').slice(2).join(' ')}</span>
               </h1>
 
               {/* Description - Important for SEO */}
-              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
+              <p className={getTextClasses(locale, 'body', "text-xl text-gray-600 leading-relaxed max-w-2xl")}>
                 {t.description}
               </p>
 
@@ -42,13 +49,13 @@ export function HomePage({ t }: HomePageProps) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                  className={getTextClasses(locale, 'button', "inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors duration-200 shadow-lg hover:shadow-xl")}
                 >
                   {t.cta.button}
                 </a>
                 <a
                   href="#learn-more"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl border-2 border-primary-600 hover:bg-primary-50 transition-colors duration-200"
+                  className={getTextClasses(locale, 'button', "inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 rounded-xl border-2 border-primary-600 hover:bg-primary-50 transition-colors duration-200")}
                 >
                   {t.learnMore}
                 </a>

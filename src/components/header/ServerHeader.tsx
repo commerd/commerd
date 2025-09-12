@@ -4,6 +4,7 @@ import { withLang } from '@/lib/i18n/links';
 import { Logo } from '@/components/ui';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
+import { getTextClasses } from '@/lib/utils/fonts';
 
 interface ServerHeaderProps {
   lang: string;
@@ -32,7 +33,7 @@ export function ServerHeader({ lang, t }: ServerHeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className={getTextClasses(currentLang, 'body', "text-gray-600 hover:text-gray-900 px-3 py-2 text-sm transition-colors duration-200")}
               >
                 {item.label}
               </Link>
