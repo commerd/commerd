@@ -1,6 +1,10 @@
 {
   "title": "About Commerd",
   "subtitle": "Our story, mission, and the passionate team behind our innovative solutions",
+  "name_origin": {
+    "title": "Why Commerd?",
+    "content": "When Thais say 'commerce' in English, it sounds like 'commerd'—and that's exactly where our name comes from. It captures who we are: a company that speaks both languages of business, bridging Scandinavian excellence with Thai market wisdom."
+  },
   "mission": {
     "title": "Our Mission",
     "content": "At Commerd, we believe in the power of innovation to transform Thai ecommerce businesses. Our mission is to provide world-class SEO, CRO, design, and business intelligence solutions that help Thai companies achieve sustainable growth in the digital marketplace."

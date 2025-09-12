@@ -31,6 +31,33 @@
       }
     ]
   },
+  "thai_market": {
+    "title": "Thailand: Southeast Asia's Digital Goldmine",
+    "subtitle": "Why foreign businesses are investing in the Thai market",
+    "stats": [
+      {
+        "number": "70M+",
+        "label": "Consumers",
+        "description": "Southeast Asia's second-largest consumer market"
+      },
+      {
+        "number": "$544B",
+        "label": "GDP",
+        "description": "Robust economy with steady 3-4% annual growth"
+      },
+      {
+        "number": "85%+",
+        "label": "Internet Penetration",
+        "description": "High digital adoption across all age groups"
+      },
+      {
+        "number": "25%+",
+        "label": "E-commerce Growth",
+        "description": "Annual digital commerce expansion rate"
+      }
+    ],
+    "content": "Thailand represents one of Southeast Asia's most attractive markets for international businesses. With over 70 million digitally-savvy consumers, a stable economy, and government initiatives supporting digital transformation, the opportunities are immense. However, success requires deep local market knowledge—from understanding Thai consumer behavior to navigating cultural nuances that can make or break your digital presence."
+  },
   "cta": {
     "title": "Ready to Get Started?",
     "subtitle": "Let's transform your digital presence with our proven strategies.",

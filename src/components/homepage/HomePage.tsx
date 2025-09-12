@@ -149,6 +149,64 @@ export function HomePage({ t }: HomePageProps) {
         </div>
       </section>
 
+      {/* Thai Market Opportunity Section */}
+      <section className="py-20 bg-gradient-to-br from-primary-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {t.thai_market.title}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {t.thai_market.subtitle}
+            </p>
+          </div>
+
+          {/* Statistics Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {t.thai_market.stats.map((stat: any, index: number) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary-600 mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-lg font-semibold text-gray-900 mb-1">
+                  {stat.label}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {stat.description}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Content */}
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-0">
+                {/* Text Content */}
+                <div className="p-8 md:p-12 flex items-center">
+                  <div>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {t.thai_market.content}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Thailand Map Image */}
+                <div className="relative h-64 lg:h-auto">
+                  <img 
+                    src="https://media.commerd.com/thailand_map.png"
+                    alt="Thailand market opportunity map"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-transparent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section id="contact" className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

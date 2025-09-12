@@ -29,7 +29,7 @@ export async function loadMessages(
 
   try {
     // Dynamic import of the message file
-    const messages = await import(`@/messages/${locale}/${namespace}.json`);
+    const messages = await import(`../../messages/${locale}/${namespace}.json`);
     const messageData = messages.default || messages;
     
     // Cache the messages
@@ -42,7 +42,7 @@ export async function loadMessages(
     // Fallback to English if available
     if (locale !== 'en') {
       try {
-        const fallbackMessages = await import(`@/messages/en/${namespace}.json`);
+        const fallbackMessages = await import(`../../messages/en/${namespace}.json`);
         const fallbackData = fallbackMessages.default || fallbackMessages;
         messageCache.set(cacheKey, fallbackData);
         return fallbackData;

@@ -1,42 +1,55 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { supportedLocales, defaultLocale } from './lib/i18n';
+import { supportedLocales, defaultLocale } from "./lib/i18n";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Belt-and-braces guard - immediately skip XML/TXT files
-  if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) {
+  // --- Exclude system routes completely ---
+  if (
+    pathname.startsWith("/api") ||               // API routes
+    pathname === "/sitemap.xml" ||               // Sitemap
+    pathname === "/robots.txt" ||                // Robots
+    pathname.startsWith("/_next") ||             // Next.js internals
+    pathname.startsWith("/_vercel") ||           // Vercel internals
+    pathname.match(/\.[^/]+$/)                   // Any file with extension (.ico, .png, .txt, etc.)
+  ) {
     return NextResponse.next();
   }
 
-  // Check if pathname already has a locale prefix
+  // --- Locale handling ---
   const pathnameHasLocale = supportedLocales.some(
-    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) =>
+      pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) {
-    // Extract locale from pathname
-    const locale = pathname.split('/')[1] as string;
-    
-    // Validate locale
+    const locale = pathname.split("/")[1] as string;
+
     if (!supportedLocales.includes(locale as any)) {
-      // Invalid locale, redirect to default locale version
-      const newPath = pathname.replace(`/${locale}`, '');
-      return NextResponse.redirect(new URL(`/${defaultLocale}${newPath === '' ? '' : newPath}`, request.url));
+      // Invalid locale -> redirect to default
+      const newPath = pathname.replace(`/${locale}`, "");
+      return NextResponse.redirect(
+        new URL(
+          `/${defaultLocale}${newPath === "" ? "" : newPath}`,
+          request.url
+        )
+      );
     }
 
-    // Valid locale, continue
     return NextResponse.next();
   }
 
-  // No locale prefix - redirect to default locale
-  return NextResponse.redirect(new URL(`/${defaultLocale}${pathname === '/' ? '' : pathname}`, request.url));
+  // No locale prefix -> redirect to default locale
+  return NextResponse.redirect(
+    new URL(
+      `/${defaultLocale}${pathname === "/" ? "" : pathname}`,
+      request.url
+    )
+  );
 }
 
-// Exact pattern from next-intl docs - excludes dot paths
+// Only run on "page-like" routes
 export const config = {
-  matcher: [
-    '/((?!api|_next|_vercel|.*\\..*).*)',
-  ],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
