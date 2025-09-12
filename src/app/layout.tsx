@@ -17,9 +17,32 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
-          href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" 
+          href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800&display=swap" 
           rel="stylesheet" 
         />
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/kanit/v17/nKKX-Go6G5tXcraQGwU.ttf" 
+          as="font" 
+          type="font/ttf" 
+          crossOrigin="anonymous"
+        />
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/kanit/v17/nKKZ-Go6G5tXcoaS.ttf" 
+          as="font" 
+          type="font/ttf" 
+          crossOrigin="anonymous"
+        />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical CSS for above-the-fold content */
+            body { font-family: "Kanit", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+            .font-kanit { font-family: "Kanit", sans-serif !important; }
+            h1 { font-family: "Kanit", sans-serif !important; font-weight: 800 !important; }
+            p { font-family: "Kanit", sans-serif !important; font-weight: 500 !important; }
+          `
+        }} />
       </head>
       <body>
         {children}
