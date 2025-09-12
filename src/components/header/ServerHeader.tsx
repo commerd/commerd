@@ -3,6 +3,7 @@ import { i18nConfig, type Locale } from '@/lib/i18n/config';
 import { withLang } from '@/lib/i18n/links';
 import { Logo } from '@/components/ui';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import { MobileMenu } from './MobileMenu';
 
 interface ServerHeaderProps {
   lang: string;
@@ -40,8 +41,13 @@ export function ServerHeader({ lang, t }: ServerHeaderProps) {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
-            <LanguageSwitcher />
+            {/* Desktop Language Switcher */}
+            <div className="hidden md:block">
+              <LanguageSwitcher />
+            </div>
+            
+            {/* Mobile Menu */}
+            <MobileMenu navigationItems={navigationItems} t={t} />
           </div>
         </div>
       </div>

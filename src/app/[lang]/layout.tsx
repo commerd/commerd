@@ -56,7 +56,9 @@ export default async function LangLayout({
     <LanguageProvider>
       <TranslationProvider dict={dict}>
         <div className="min-h-screen flex flex-col">
+          <div className="sticky top-0 z-50">
           <ServerHeader lang={lang} t={dict.header} />
+          </div>
           <main className="flex-1">
             {children}
           </main>

@@ -32,6 +32,20 @@ export const seoContent: Record<string, Record<Locale, SEOConfig>> = {
       ogType: 'website',
     },
   },
+  'conversion-optimization': {
+    en: {
+      title: 'Conversion Rate Optimization (CRO): Complete Guide 2024 | Commerd',
+      description: 'Master conversion rate optimization with our comprehensive CRO guide. Learn proven strategies, tools, and techniques to turn more visitors into customers and boost your business growth.',
+      keywords: ['conversion rate optimization', 'CRO', 'A/B testing', 'landing page optimization', 'user experience', 'conversion optimization', 'website optimization', 'digital marketing'],
+      ogType: 'article',
+    },
+    th: {
+      title: 'การเพิ่มอัตราการแปลง (CRO): คู่มือฉบับสมบูรณ์ 2024 | Commerd',
+      description: 'เชี่ยวชาญการเพิ่มอัตราการแปลงด้วยคู่มือ CRO ที่ครอบคลุมของเรา เรียนรู้กลยุทธ์ เครื่องมือ และเทคนิคที่พิสูจน์แล้วในการเปลี่ยนผู้เยี่ยมชมให้กลายเป็นลูกค้าและเพิ่มการเติบโตของธุรกิจ',
+      keywords: ['การเพิ่มอัตราการแปลง', 'CRO', 'การทดสอบ A/B', 'การปรับปรุงหน้า Landing', 'ประสบการณ์ผู้ใช้', 'การปรับปรุงการแปลง', 'การปรับปรุงเว็บไซต์', 'การตลาดดิจิทัล'],
+      ogType: 'article',
+    },
+  },
 };
 
 export function getSEOContent(page: string, locale: Locale = 'en'): SEOConfig {

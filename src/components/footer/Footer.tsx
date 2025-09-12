@@ -83,7 +83,7 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href={withLang(currentLang, '/cro')} 
+                  href={withLang(currentLang, '/conversion-optimization')} 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t.services.cro}

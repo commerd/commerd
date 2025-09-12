@@ -55,31 +55,31 @@ export function HomePage({ t }: HomePageProps) {
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex items-center space-x-8 pt-8">
+              <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">500+</div>
-                  <div className="text-sm text-gray-600">Projects</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gray-900">500+</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">98%</div>
-                  <div className="text-sm text-gray-600">Success Rate</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gray-900">98%</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Success Rate</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">24/7</div>
-                  <div className="text-sm text-gray-600">Support</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gray-900">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Support</div>
                 </div>
               </div>
             </div>
 
             {/* Right Visual - Static Cards for SEO */}
             <div className="relative">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Feature Cards - Static for SEO */}
                 {t.features.items.map((feature: any, index: number) => (
                   <div
                     key={index}
-                    className={`bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 ${
-                      index === 0 ? 'col-span-2' : ''
+                    className={`bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl border border-white/20 ${
+                      index === 0 ? 'sm:col-span-2' : ''
                     }`}
                   >
                     <div className="flex items-start space-x-4">
@@ -161,45 +161,103 @@ export function HomePage({ t }: HomePageProps) {
             </p>
           </div>
 
-          {/* Statistics Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {t.thai_market.stats.map((stat: any, index: number) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary-600 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-lg font-semibold text-gray-900 mb-1">
-                  {stat.label}
-                </div>
-                <div className="text-sm text-gray-600">
-                  {stat.description}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Content */}
+          {/* Thailand Section - Responsive Layout */}
           <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-0">
-                {/* Text Content */}
-                <div className="p-8 md:p-12 flex items-center">
-                  <div>
-                    <p className="text-lg text-gray-700 leading-relaxed">
+            {/* Mobile: Single unified section */}
+            <div className="block lg:hidden">
+              <div className="relative rounded-2xl shadow-lg overflow-hidden">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: 'url(https://media.commerd.com/thailand_map.png)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/85"></div>
+                </div>
+                
+                {/* Content */}
+                <div className="relative z-10 p-8">
+                  {/* Statistics Grid */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    {t.thai_market.stats.map((stat: any, index: number) => (
+                      <div key={index} className="text-center">
+                        <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-2">
+                          {stat.number}
+                        </div>
+                        <div className="text-sm font-semibold text-gray-900 mb-1">
+                          {stat.label}
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {stat.description}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Descriptive Content */}
+                  <div className="max-w-2xl mx-auto">
+                    <p className="text-base text-gray-800 leading-relaxed font-medium text-center">
                       {t.thai_market.content}
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Desktop: Side-by-side layout */}
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8">
+              {/* Statistics Section */}
+              <div className="relative rounded-2xl shadow-lg overflow-hidden">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: 'url(https://media.commerd.com/thailand_map.png)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/80"></div>
+                </div>
                 
-                {/* Thailand Map Image */}
-                <div className="relative h-64 lg:h-auto">
-                  <img 
-                    src="https://media.commerd.com/thailand_map.png"
-                    alt="Thailand market opportunity map"
-                    className="w-full h-full object-cover object-center"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-transparent"></div>
+                {/* Stats Content */}
+                <div className="relative z-10 p-8 h-full flex items-center">
+                  <div className="grid grid-cols-2 gap-6 w-full">
+                    {t.thai_market.stats.map((stat: any, index: number) => (
+                      <div key={index} className="text-center">
+                        <div className="text-3xl xl:text-4xl font-bold text-primary-600 mb-2">
+                          {stat.number}
+                        </div>
+                        <div className="text-base xl:text-lg font-semibold text-gray-900 mb-1">
+                          {stat.label}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          {stat.description}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div className="relative rounded-2xl shadow-lg overflow-hidden">
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: 'url(https://media.commerd.com/thailand_map.png)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/80"></div>
+                </div>
+                
+                {/* Content Overlay */}
+                <div className="relative z-10 p-8 h-full flex items-center">
+                  <div className="max-w-lg">
+                    <p className="text-lg xl:text-xl text-gray-800 leading-relaxed font-medium">
+                      {t.thai_market.content}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
