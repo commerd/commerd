@@ -16,7 +16,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Kanit", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-kanit), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 @theme {
@@ -62,31 +62,31 @@ body {
 
 /* Optimized Kanit Font Classes - Only used weights */
 .kanit-regular {
-  font-family: "Kanit", sans-serif;
+  font-family: var(--font-kanit), sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .kanit-medium {
-  font-family: "Kanit", sans-serif;
+  font-family: var(--font-kanit), sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
 .kanit-semibold {
-  font-family: "Kanit", sans-serif;
+  font-family: var(--font-kanit), sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 .kanit-bold {
-  font-family: "Kanit", sans-serif;
+  font-family: var(--font-kanit), sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 .kanit-extrabold {
-  font-family: "Kanit", sans-serif;
+  font-family: var(--font-kanit), sans-serif;
   font-weight: 800;
   font-style: normal;
 }
@@ -97,7 +97,7 @@ body {
 .kanit-semibold,
 .kanit-bold,
 .kanit-extrabold {
-  font-family: "Kanit", sans-serif !important;
+  font-family: var(--font-kanit), sans-serif !important;
   letter-spacing: 0.025em;
 }
 
@@ -121,23 +121,23 @@ body {
 
 /* Force Kanit font using Tailwind classes */
 .font-kanit {
-  font-family: "Kanit", sans-serif !important;
+  font-family: var(--font-kanit), sans-serif !important;
 }
 
 /* Ensure all content uses Kanit */
 * {
-  font-family: "Kanit", sans-serif !important;
+  font-family: var(--font-kanit), sans-serif !important;
 }
 
 /* Clean font styling for all content */
 h1 {
-  font-family: "Kanit", sans-serif !important;
+  font-family: var(--font-kanit), sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: -0.02em !important;
 }
 
 p {
-  font-family: "Kanit", sans-serif !important;
+  font-family: var(--font-kanit), sans-serif !important;
   font-weight: 500 !important;
   letter-spacing: 0.01em !important;
 }

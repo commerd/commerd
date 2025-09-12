@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: ['@/components/seo', '@/lib/seo'],
-    optimizeCss: true,
   },
   
   // Compiler optimizations
