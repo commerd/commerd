@@ -23,26 +23,6 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
   const [filteredData, setFilteredData] = useState<FlattenedItem[]>([]);
   const [saving, setSaving] = useState(false);
 
-  // Flatten the data for editing
-  useEffect(() => {
-    const flattened = flattenObject(data);
-    setFlattenedData(flattened);
-    setFilteredData(flattened);
-  }, [data, flattenObject]);
-
-  // Filter data based on search term
-  useEffect(() => {
-    if (!searchTerm) {
-      setFilteredData(flattenedData);
-    } else {
-      const filtered = flattenedData.filter(item =>
-        item.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.value.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredData(filtered);
-    }
-  }, [searchTerm, flattenedData]);
-
   const flattenObject = useCallback((obj: any, prefix = '', level = 0): FlattenedItem[] => {
     const result: FlattenedItem[] = [];
     
@@ -63,6 +43,26 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
     
     return result.sort((a, b) => a.key.localeCompare(b.key));
   }, []);
+
+  // Flatten the data for editing
+  useEffect(() => {
+    const flattened = flattenObject(data);
+    setFlattenedData(flattened);
+    setFilteredData(flattened);
+  }, [data, flattenObject]);
+
+  // Filter data based on search term
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredData(flattenedData);
+    } else {
+      const filtered = flattenedData.filter(item =>
+        item.key.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.value.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filtered);
+    }
+  }, [searchTerm, flattenedData]);
 
   const updateKey = (keyPath: string, value: string) => {
     const keys = keyPath.split('.');
