@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Admin-specific styles */
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-button {
+  background: #7f8f4d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.admin-button:hover {
+  background: #6a783f;
+}
+
+.admin-button-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.admin-button-secondary:hover {
+  background: #e5e7eb;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: #7f8f4d;
+  box-shadow: 0 0 0 3px rgba(127, 143, 77, 0.1);
+}
+
+.admin-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.admin-textarea:focus {
+  outline: none;
+  border-color: #7f8f4d;
+  box-shadow: 0 0 0 3px rgba(127, 143, 77, 0.1);
+}
+
+.admin-label {
+  display: block;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.admin-form-group {
+  margin-bottom: 1rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-table tr:hover {
+  background: #f9fafb;
+}
+
+.admin-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.admin-badge-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.admin-badge-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-badge-error {
+  background: #fee2e2;
+  color: #991b1b;
+}

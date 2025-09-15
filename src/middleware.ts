@@ -1,13 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { supportedLocales, defaultLocale } from "./lib/i18n";
+import { adminMiddleware } from "./middleware-admin";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Apply admin security middleware first
+  if (pathname.startsWith("/admin")) {
+    return adminMiddleware(request);
+  }
+
   // --- Exclude system routes completely ---
   if (
     pathname.startsWith("/api") ||               // API routes
+    pathname.startsWith("/admin") ||             // Admin routes
     pathname === "/sitemap.xml" ||               // Sitemap
     pathname === "/robots.txt" ||                // Robots
     pathname.startsWith("/_next") ||             // Next.js internals
