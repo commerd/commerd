@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
+import Link from "next/link";
 import { Kanit } from "next/font/google";
 import { AdminSecurity } from "@/components/admin/AdminSecurity";
 import { AuthProvider } from "@/lib/auth/AuthContext";
@@ -44,21 +45,21 @@ export default function AdminLayout({
                 <div className="p-6">
                   <h1 className="text-2xl font-bold text-gray-900 mb-8">Commerd Admin</h1>
                   <nav className="space-y-2">
-                    <a href="/admin" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    <Link href="/admin" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                       Dashboard
-                    </a>
-                    <a href="/admin/messages" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    </Link>
+                    <Link href="/admin/messages" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                       Messages
-                    </a>
-                    <a href="/admin/pages" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    </Link>
+                    <Link href="/admin/pages" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                       Pages
-                    </a>
-                    <a href="/admin/seo" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    </Link>
+                    <Link href="/admin/seo" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                       SEO
-                    </a>
-                    <a href="/admin/settings" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+                    </Link>
+                    <Link href="/admin/settings" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
                       Settings
-                    </a>
+                    </Link>
                   </nav>
                 </div>
               </aside>

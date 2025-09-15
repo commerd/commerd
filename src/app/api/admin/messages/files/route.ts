@@ -27,7 +27,8 @@ export async function GET() {
           // Count keys in the file
           let keyCount = 0;
           try {
-            const content = require(filePath);
+            const fs = await import('fs');
+            const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
             keyCount = countKeys(content);
           } catch (error) {
             console.error(`Error reading ${filePath}:`, error);

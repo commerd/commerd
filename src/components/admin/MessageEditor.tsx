@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface MessageEditorProps {
   filePath: string;
@@ -28,7 +28,7 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
     const flattened = flattenObject(data);
     setFlattenedData(flattened);
     setFilteredData(flattened);
-  }, [data]);
+  }, [data, flattenObject]);
 
   // Filter data based on search term
   useEffect(() => {
@@ -43,7 +43,7 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
     }
   }, [searchTerm, flattenedData]);
 
-  const flattenObject = (obj: any, prefix = '', level = 0): FlattenedItem[] => {
+  const flattenObject = useCallback((obj: any, prefix = '', level = 0): FlattenedItem[] => {
     const result: FlattenedItem[] = [];
     
     for (const [key, value] of Object.entries(obj)) {
@@ -62,7 +62,7 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
     }
     
     return result.sort((a, b) => a.key.localeCompare(b.key));
-  };
+  }, []);
 
   const updateKey = (keyPath: string, value: string) => {
     const keys = keyPath.split('.');
@@ -189,7 +189,7 @@ export function MessageEditor({ filePath, initialData, onSave, onCancel }: Messa
 
         {filteredData.length === 0 && searchTerm && (
           <div className="text-center py-8">
-            <p className="text-gray-500">No results found for "{searchTerm}"</p>
+            <p className="text-gray-500">No results found for &quot;{searchTerm}&quot;</p>
           </div>
         )}
       </div>

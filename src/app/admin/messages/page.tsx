@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { MessageEditor } from '@/components/admin/MessageEditor';
 
 interface MessageFile {
@@ -21,7 +20,6 @@ export default function MessagesPage() {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [messageData, setMessageData] = useState<MessageData>({});
   const [loading, setLoading] = useState(true);
-  const [editing, setEditing] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
 
   // Load available message files
@@ -90,22 +88,6 @@ export default function MessagesPage() {
     }
   };
 
-  // Update a specific key in the message data
-  const updateKey = (keyPath: string, value: string) => {
-    const keys = keyPath.split('.');
-    const newData = { ...messageData };
-    
-    let current = newData;
-    for (let i = 0; i < keys.length - 1; i++) {
-      if (!current[keys[i]]) {
-        current[keys[i]] = {};
-      }
-      current = current[keys[i]];
-    }
-    
-    current[keys[keys.length - 1]] = value;
-    setMessageData(newData);
-  };
 
   // Flatten nested object for table display
   const flattenObject = (obj: any, prefix = ''): Array<{ key: string; value: string; type: string }> => {
