@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const kanit = Kanit({
   subsets: ['latin', 'thai'],
@@ -21,6 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html className={kanit.variable}>
+      <head>
+        <Analytics />
+      </head>
       <body>
         {children}
       </body>
